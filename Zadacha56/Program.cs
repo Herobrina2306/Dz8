@@ -47,16 +47,15 @@ void PrintArray(int[,] inArray)
 
 void SmallestRow(int[,] arr, int col)
 {
-    int sum1 = col *10; // куда будем соxранять сумму и с чем сравнивать
+    int sum1 = col *10; 
     int count = 0; 
-    int fin = 0;
+    int fin = 1;
     for(int i = 0; i < arr.GetLength(0); i++)
     {
-        int sum2 = 0; //изменяемая сумма
+        int sum2 = 0; 
         for(int j = 0; j < arr.GetLength(1); j++)
         {
             sum2 = arr[i,j] + sum2;
-            Console.Write(sum1 + " ");
             
         }
 
@@ -64,8 +63,8 @@ void SmallestRow(int[,] arr, int col)
         {
             sum1 = sum2;
             count++;
+            fin = i+1;
         }
-        fin = i;
         sum2 = 0;
     
     }
