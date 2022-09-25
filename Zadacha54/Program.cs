@@ -21,8 +21,8 @@ PrintArray(array);
 
 Console.WriteLine();
 
-int[,] newArray = SelectionSort(array);
-PrintArray(newArray);
+StringFromTheArray(array);
+PrintArray(array);
 
 int[,] GetArray(int m, int n, int minVaiue, int maxVaiue)
 {
@@ -50,50 +50,37 @@ void PrintArray(int[,] inArray)
 }
 
 
-// int[,] ArrayInDescendingOrder (int[,] arr)
-// {
-//     int r = arr.GetLength(0);
-//     int c = arr.GetLength(1); 
-//     for(int i = 0; i <r; i++)
-//     {
-        
-//         int k = arr[i,0];
-//         for (int j = 0; j<c; j++)
-//         {
-//             int minPosition = j;
-//             int m = 0;
-//             if(arr[i,j] > arr[i,minPosition])
-//             {
-//                 minPosition = j;
-//             }
-//             m = arr[i,j];
-//             arr[i,j] = arr[i,minPosition];
-//             arr[i,minPosition] = m;
-            
-//         }
-        
-//     }
-//     return arr;
-// }
-
-int[,] SelectionSort(int[,] array)
+void StringFromTheArray (int[,] arr)
 {
-    int[,] arrayNew = new int[array.GetLength(0),array.GetLength(1)];
-    for (int i = 0; i < array.GetLength(0); i++)
+    for(int y = 0; y < arr.GetLength(0); y++)
     {
-        for (int j = 0; j < array.GetLength(1) - 1; j++)
+        int c = arr.GetLength(1);
+        int[] newArray = new int[c];
+        for(int x = 0; x < arr.GetLength(1); x++)
         {
-            int minPosition = j;
-            int m = 0;
-
-            for (int k = j+1; k < array.GetLength(1) ; k++)
-            {
-                
-                if(array[i,k] < m) m = array[i,k];
-
-            }
-            arrayNew[i,minPosition] = m;
+        newArray[x] = arr[y,x];
         }
+        for(int j = 0; j < arr.GetLength(1); j++)
+        {
+            int[] new1 = SelectionSort(newArray);
+            arr[y, j] = new1[j];
+       }
     }
-    return arrayNew;
+}
+
+int[] SelectionSort(int[] array)
+{
+    for (int i = 0; i < array.Length - 1; i++)
+    {
+        int minPosition = i;
+        for (int j = i+1; j < array.Length ; j++)
+        {
+            if(array[j] > array[minPosition]) minPosition = j;
+
+        }
+        int temporary = array[i];
+        array[i] = array[minPosition];
+        array[minPosition] = temporary;
+    }
+    return array;
 }
