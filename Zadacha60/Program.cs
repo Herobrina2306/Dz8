@@ -31,22 +31,6 @@ int[,,] GetArray(int m, int n, int l)
     return result;
 }
 
-// int[,,] GetArray(int m, int n, int l)
-// {
-//     int[,,] result = new int[m, n, l];
-//     foreach(int rand in result)
-//     {
-//         result[0,0,0] = new Random().Next(10,21);
-//         int r = result[0,0,0];
-//         while(m < result.GetLength(0) && n <result.GetLength(1) && l < result.GetLength(2))
-//         {
-//             result[m,n,l] = new Random().Next(1,10) + r;
-//             r = result[m,n,l];
-//         }
-//     }
-//     return result;
-// }
-
 void PrintArray(int[,,] inArray)
 {
     for(int i = 0; i<inArray.GetLength(0); i++)
