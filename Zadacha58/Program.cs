@@ -14,11 +14,12 @@ int row = int.Parse(Console.ReadLine() ?? string.Empty);
 Console.WriteLine("Введите количество столбцов");
 int columns = int.Parse(Console.ReadLine() ?? string.Empty);
 
-int[,] array1 = GetArray(row, columns, 0, 9);
+
+int[,] array1 = GetArray(row, columns, 1, 9);
 PrintArray(array1);
 Console.WriteLine();
 
-int[,] array2 = GetArray(row, columns, 0, 9);
+int[,] array2 = GetArray(row, columns, 1, 9);
 PrintArray(array2);
 
 Console.WriteLine();
@@ -56,11 +57,14 @@ int[,] Composition(int[,] arr1, int[,] arr2)
     int r = arr1.GetLength(0);
     int c = arr1.GetLength(1);
     int[,] arrNew = new int[r,c];
-    for(int i = 0; i<arrNew.GetLength(0); i++)
+    for(int i = 0; i<arr1.GetLength(0); i++)
     {
-        for(int j = 0; j<arrNew.GetLength(1); j++)
+        for(int j = 0; j<arr2.GetLength(0); j++)
         {
-            arrNew[i,j] = arr1[i,j] * arr2[i,j];
+            for (int k = 0; k < arr2.GetLength(1); k++)
+            {
+                arrNew[i,j] += arr1[i,k] * arr2[k,j]; 
+            }
         }
     }
     return arrNew;
